@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link rel="icon" href="https://congdaotao.tmu.edu.vn/static/media/logo-dhtm-3.977012c3.png" type="image/png">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.235;
+    color: rgb(31, 79, 159);
+    margin: 0px 0px 0.35em;
+    background-color: #dddddd;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .left-section {
+            flex: 0 0 70%; /* Phần ảnh chiếm 60% */
+            height: 100%;
+            position: relative;
+        }
+
+        .left-section img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .right-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px; /* Phần đăng nhập cách màn hình 20px */
+        }
+
+        .login-box {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-box p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-box input.error {
+            border-color: red;
+        }
+
+        .login-box .error-message {
+            color: red;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+
+        }
+
+        .login-box button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 960px) {
+            .container {
+                flex-direction: row;
+        padding: 5px 50px
+            }
+            .left-section {
+                display: none;
+            }
+            .right-section {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <img src="https://congdaotao.tmu.edu.vn/static/media/banner-1668412987.6c30c16b.jpg" alt="Banner">
+        </div>
+        <div class="right-section">
+            <div class="login-box">
+                <img src="https://congdaotao.tmu.edu.vn/static/media/logo-dhtm-3.977012c3.png" alt="Logo">
+                <h2 style="    font-weight: 600;
+                font-size: 1.5rem;
+                line-height: 1.235;
+                color: rgb(31, 79, 159);">ĐĂNG NHẬP</h2>
+                <p style="font-weight: 400;
+                font-size: 0.875rem;
+                line-height: 1.43;
+                color: rgb(107, 119, 140);">Cổng thông tin đào tạo</p>
+                <input type="text" id="username" placeholder="Tên đăng nhập" required style="border-radius: 10px;">
+                <div id="username-error" class="error-message"></div>
+                <input type="password" id="password" placeholder="Mật khẩu" required style="border-radius: 10px;">
+                <div id="password-error" class="error-message"></div>
+                <button onclick="handleLogin()" style="background-color: #1f4f9f;">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const accounts = [
+            { username: "22D260088" }
+        ];
+    
+        // Hàm xử lý khi nhấn đăng nhập
+        function handleLogin() {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+    
+            clearErrors();
+    
+            let isValid = true;
+    
+            if (!username) {
+                isValid = false;
+                document.getElementById("username").classList.add("error");
+                document.getElementById("username-error").textContent = "Tên đăng nhập không được để trống";
+            }
+    
+            if (!password) {
+                isValid = false;
+                document.getElementById("password").classList.add("error");
+                document.getElementById("password-error").textContent = "Mật khẩu không được để trống";
+            }
+    
+            if (isValid) {
+                const account = accounts.find(acc => acc.username === username);
+                if (account) {
+                    window.location.href = "index1.html";
+                } else {
+                    window.location.href = "https://anh-co-dieu-muon-noi.vercel.app/troll.mp4";
+                }
+            }
+        }
+    
+        // Hàm xóa lỗi
+        function clearErrors() {
+            document.getElementById("username").classList.remove("error");
+            document.getElementById("password").classList.remove("error");
+            document.getElementById("username-error").textContent = "";
+            document.getElementById("password-error").textContent = "";
+        }
+    
+        // Hàm viết hoa tự động cho trường nhập Tên đăng nhập
+        document.getElementById("username").addEventListener("input", function () {
+            this.value = this.value.toUpperCase(); // Chuyển thành chữ hoa
+        });
+    </script>
+</body>
+</html>

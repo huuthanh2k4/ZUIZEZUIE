@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi cậu</title>
+    <style>
+  body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1, .final-message {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .final-message {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff69b4;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+#gifContainerImg {
+    width: 60%;
+    height: 60%;
+}
+
+/* From Uiverse.io by zjssun */ 
+.button {
+  position: relative;
+  padding: 10px 22px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #e77b7b;
+  transition: all 0.2s ease;
+}
+
+.button:active {
+  transform: scale(0.96);
+}
+
+.button:before,
+.button:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+
+.button:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+.button:hover::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+#siBtn {
+    padding: 10px 20px; 
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #009705; 
+    color: white;
+    border: 2px solid #FFC0CB; 
+    border-radius: 10px; 
+}
+
+#noBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #FF5733; 
+    color: white;
+    border: 2px solid #FFC0CB; 
+    border-radius: 10px;
+}
+#noBtn span {
+    font-size: 18px;
+    color: #fcf4f4; 
+
+}
+
+#siBtn:hover {
+    background-color: #053a03;
+}
+#noBtn:hover {
+    background-color: #641e0d;
+}
+.bg-green {
+    background-color: #ffffff;
+}
+
+#messageContainer {
+    font-size: 30px;
+    color: #FF0000; 
+    font-family: 'YourDesiredFont', sans-serif;
+    text-shadow: 2px 2px 4px #000;
+    animation: pulse 0.5s infinite alternate; 
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.3);
+    }
+}
+
+.heart {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #ff6f61;
+            transform: rotate(45deg);
+            animation: float 4s ease-in-out infinite;
+            border-radius: 50%;
+            margin-top: 100%;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #ff6f61;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -7.5px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -7.5px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .heart {
+    position: fixed; /* Giữ trái tim ở nền */
+    width: 15px;
+    height: 15px;
+    background-color: #ff6f61;
+    transform: rotate(45deg);
+    animation: float 6s ease-in-out infinite;
+    border-radius: 50%;
+    z-index: -1; /* Đảm bảo trái tim nằm dưới tất cả nội dung */
+    margin-top: -100%;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #ff6f61;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -7.5px;
+    left: 0;
+}
+
+.heart::after {
+    left: -7.5px;
+    top: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) rotate(45deg); /* Trái tim rơi xuống cuối trang */
+        opacity: 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" src="tải xuống.mp3" loop style="display: none;"></audio>
+
+    <div class="container" id="container">
+        <div id="gifContainer">
+            <img id="gifContainerImg" src="https://64.media.tumblr.com/8eeb5d7329867905f8074ccbe3c7be0c/7c00bf133b5a8484-76/s250x400/2f214f6f3a0ece4f2a7db867286a00dae49070e0.gifv" alt="Ositos Iniciales">
+        </div>
+        <h1 id="question">Cậu iu ơi!<br>Tớ cho cậu xem cái này nè</h1>
+        <div id="messageContainer" style="display: none;"></div>
+        <button id="switchBtn" class="button">Chuyển</button>
+        
+        <!-- Phần hỏi cuối cùng -->
+        <div id="finalQuestionContainer" style="display: none;">
+            <h1>Cậu có thích cái này không? 🥰</h1>
+            <button id="yesBtn" class="button">Có</button>
+            <button id="noBtn" class="button">Không</button>
+        </div>
+        
+    </div>
+    
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNFQbKCFQjHzJwEO2kuRyo3Tyr63FUlWw",
+            authDomain: "bai-test-2ae56.firebaseapp.com",
+            databaseURL: "https://bai-test-2ae56-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "bai-test-2ae56",
+            storageBucket: "bai-test-2ae56.appspot.com",
+            messagingSenderId: "152935522979",
+            appId: "1:152935522979:web:070ca9c7da4a4867959516",
+            measurementId: "G-9RQJH9ZCBJ"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const responseRef = ref(database, "response");
+
+        const yesGifUrl = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
+        const noGifUrl = "https://media.giphy.com/media/l2JHRhAtnJSDNJ2py/giphy.gif";
+
+
+        // Hiển thị kết quả từ Firebase
+const updateUI = (response) => {
+    const container = document.getElementById("container");
+    if (response) {
+        const finalMessage = response === "yes" ? "Chúc cậu iu ngủ ngon nha ❤️" : "Ui! Cậu ko thích cái này à 😔";
+        const gifUrl = response === "yes" 
+            ? "https://imgcdn.sigstick.com/dKjUP9P2dt4kKkfRVgmr/1-1.thumb128.webp" 
+            : "https://i.pinimg.com/originals/ca/25/5a/ca255aa6992a6d815f1aa77c4f8b24f9.gif";
+
+        container.innerHTML = `
+            <div class="final-message">${finalMessage}</div>
+            <img src="${gifUrl}" alt="Response GIF">
+        `;
+    } else {
+        container.innerHTML = `
+            <div id="gifContainer">
+                <img id="gifContainerImg" src="https://64.media.tumblr.com/8eeb5d7329867905f8074ccbe3c7be0c/7c00bf133b5a8484-76/s250x400/2f214f6f3a0ece4f2a7db867286a00dae49070e0.gifv" alt="Ositos Iniciales">
+            </div>
+            <h1 id="question">Cậu iu ơi!<br>Tớ cho cậu xem cái này nè</h1>
+            <div id="messageContainer" style="display: none;"></div>
+            <button id="switchBtn" class="button">Chuyển</button>
+
+            <div id="finalQuestionContainer" style="display: none;">
+                <h1>Cậu có thích cái này không? 🥰</h1>
+                <button id="yesBtn" class="button">Có</button>
+                <button id="noBtn" class="button">Không</button>
+            </div>
+        `;
+        addEventListeners(); // Gắn sự kiện cho các nút
+    }
+};
+
+// Đọc dữ liệu từ Firebase và cập nhật giao diện
+onValue(responseRef, (snapshot) => {
+    const data = snapshot.val();
+    updateUI(data);
+});
+
+// Lưu câu trả lời vào Firebase
+const saveResponse = (response) => {
+    set(responseRef, response)
+        .then(() => console.log("Response saved:", response))
+        .catch((error) => console.error("Error saving response:", error));
+};
+
+// Xóa câu trả lời trong Firebase và đặt lại giao diện
+const resetResponse = () => {
+    remove(responseRef)
+        .then(() => {
+            console.log("Response reset");
+            // Thiết lập lại giao diện về trạng thái ban đầu
+            const gifContainerImg = document.getElementById("gifContainerImg");
+            const question = document.getElementById("question");
+            const messageContainer = document.getElementById("messageContainer");
+            const finalQuestionContainer = document.getElementById("finalQuestionContainer");
+            const switchBtn = document.getElementById("switchBtn");
+
+
+            gifContainerImg.style.display = "block";
+            gifContainerImg.src = "https://64.media.tumblr.com/8eeb5d7329867905f8074ccbe3c7be0c/7c00bf133b5a8484-76/s250x400/2f214f6f3a0ece4f2a7db867286a00dae49070e0.gifv";
+            question.style.display = "block";
+            messageContainer.style.display = "none";
+            finalQuestionContainer.style.display = "none";
+            switchBtn.style.display = "inline-block";
+
+            currentMessageIndex = 0; // Đặt lại chỉ số thông điệp
+        })
+        .catch((error) => console.error("Error resetting response:", error));
+};
+
+// Gắn sự kiện cho các nút
+const addEventListeners = () => {
+    document.getElementById("yesBtn")?.addEventListener("click", () => saveResponse("yes"));
+    document.getElementById("noBtn")?.addEventListener("click", () => saveResponse("no"));
+    document.getElementById("switchBtn")?.addEventListener("click", handleSwitch);
+};
+
+// Chuyển đổi ảnh và tin nhắn
+const messages = [
+    "Cậu nhìn cái này nha 😊",
+    "Cậu nhìn thấy không? 😊",
+    "Nhìn kỹ nhé ",
+    "Đây nè cậu ơi! 😄",
+    "Cái này hịn lắm đấy, cậu nhìn đi! 🥹",
+    "🥰",
+    "Cậu xinh thật đấy! 😳",
+    "Ngại quá! Cậu thấy sao nào? 😅",
+    "Chạy thôi! 🤭",
+    "Tạm biệt cậu nha! "
+];
+
+const sadGifUrls = [
+    "https://imgcdn.sigstick.com/HbPZ9MYeQEkQZMJpy7OF/15-1.thumb128.png",
+    "cậu nhìn thấy ko.png",
+    "Nhìn kĩ nha.png",
+    "đây nè cậu ơi.png",
+    "Cái này nè.png",
+    "cậu ý.png",
+    "cậu xinh thật đấy.png",
+    "Ngại Quá.png",
+    "Chạy thôi.png",
+    "https://imgcdn.sigstick.com/fXpgcJZCDa13Tgn4sDWt/17-1.thumb128.webp"
+];
+
+let currentMessageIndex = 0;
+
+const handleSwitch = () => {
+    const question = document.getElementById("question");
+    const gifContainerImg = document.getElementById("gifContainerImg");
+    const messageContainer = document.getElementById("messageContainer");
+    const finalQuestionContainer = document.getElementById("finalQuestionContainer");
+    const switchBtn = document.getElementById("switchBtn");
+
+    if (question) {
+        question.style.display = "none";
+    }
+
+    if (currentMessageIndex < messages.length) {
+        messageContainer.style.display = "block";
+        messageContainer.innerHTML = messages[currentMessageIndex];
+        gifContainerImg.src = sadGifUrls[currentMessageIndex];
+        currentMessageIndex++;
+    } else {
+        gifContainerImg.style.display = "none";
+        messageContainer.style.display = "none";
+        switchBtn.style.display = "none";
+        finalQuestionContainer.style.display = "block"; // Hiển thị câu hỏi cuối cùng
+    }
+};
+
+// Gắn sự kiện ban đầu
+addEventListeners();
+
+
+
+        function createHeartRain() {
+    for (let i = 0; i < 10; i++) { // Giảm số lượng để hiệu ứng nhẹ hơn
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDelay = Math.random() * 3 + 's';
+        heart.style.animationDuration = 6 + Math.random() * 4 + 's';
+        document.body.appendChild(heart);
+
+        // Xóa trái tim sau khi hoạt ảnh kết thúc
+        heart.addEventListener('animationend', function () {
+            heart.remove();
+        });
+    }
+}
+
+// Gọi hiệu ứng mưa trái tim mỗi 1 giây
+setInterval(createHeartRain, 1000);
+
+// Lấy thẻ audio
+const backgroundMusic = document.getElementById("backgroundMusic");
+
+// Bắt sự kiện khi người dùng click vào trang web
+window.addEventListener("click", () => {
+    if (backgroundMusic && backgroundMusic.paused) {
+        backgroundMusic.play().then(() => {
+            console.log("Nhạc nền đã bắt đầu phát.");
+        }).catch((error) => {
+            console.error("Lỗi phát nhạc:", error);
+        });
+    }
+});
+
+// Kiểm tra khi nhạc kết thúc (nếu cần)
+backgroundMusic.addEventListener("ended", () => {
+    console.log("Nhạc nền đã kết thúc (đang lặp lại).");
+});
+
+// Tùy chọn: Bắt lỗi nếu có vấn đề khi phát nhạc
+backgroundMusic.addEventListener("error", (error) => {
+    console.error("Không thể phát nhạc:", error);
+});
+
+
+    </script>
+</body>
+</html>
